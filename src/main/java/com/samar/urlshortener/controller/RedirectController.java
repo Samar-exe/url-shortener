@@ -15,7 +15,7 @@ public class RedirectController {
         this.urlShortenerService = urlShortenerService; 
     }
     
-    @GetMapping("/{shortCode}")
+    @GetMapping("/{shortCode:[a-zA-Z0-9]+}")
     public ResponseEntity<Void> redirect(@PathVariable String shortCode) {
         String originalUrl = urlShortenerService.resolveUrl(shortCode);
         

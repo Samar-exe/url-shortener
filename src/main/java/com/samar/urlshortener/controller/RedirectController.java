@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 public class RedirectController {
     private final UrlShortenerService urlShortenerService;
     public RedirectController(UrlShortenerService urlShortenerService) { this.urlShortenerService = urlShortenerService; }
-    @GetMapping("/{shortCode}")
+    @GetMapping("/{shortCode:[A-Za-z0-9]{7}}")
     public ResponseEntity<Void> redirect(@PathVariable String shortCode) {
         String originalUrl = urlShortenerService.resolveUrl(shortCode);
         HttpHeaders headers = new HttpHeaders();
